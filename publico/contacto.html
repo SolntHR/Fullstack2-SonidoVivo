@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso - Sonido Vivo</title>
+    <title>Contacto - Sonido Vivo</title>
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!--Css-->
     <link rel="stylesheet" href="../css/general.css">
 </head>
-<body class="d-flex flex-column min-vh-100 bg-light"> <!---->
-    
+<body>
     <!-- Menú de Navegación -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -22,12 +21,12 @@
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="catalogo_general.html">Catálogo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="login.html">Iniciar Sesión</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Iniciar Sesión</a></li>
                     </ul>
-                    <!-- Botón del carrito que abre el panel lateral -->
+                    <!-- Carrito -->
                     <button class="btn btn-outline-light ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#panelCarrito">
                         Carrito (<span id="contador-carrito">0</span>)
                     </button>
@@ -36,42 +35,52 @@
         </nav>
     </header>
 
-    <!-- Contenedor del Formulario de Login -->
-    <main class="container my-auto py-5">
+    <!-- Formulario de Contacto -->
+    <main class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="card shadow">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
                     <div class="card-body p-4 p-md-5">
-                        <h2 class="text-center mb-4">Sonido Vivo</h2>
+                        <h2 class="text-center mb-4">Ponte en contacto</h2>
+                        <p class="text-center text-muted mb-4">¿Tienes dudas sobre un equipo o necesitas asesoría? Escríbenos y te responderemos a la brevedad.</p>
                         
-                        <form id="form-login">
+                        <form id="form-contacto">
+                            <!-- Nombre -->
                             <div class="mb-3">
-                                <label for="email-login" class="form-label">Correo Electrónico</label>
-                                <input type="text" class="form-control" id="email-login" placeholder="correo@ejemplo.com">
-                                <!-- Contenedor para el mensaje de error del correo -->
-                                <div id="error-email" class="text-danger small mt-1 d-none"></div>
+                                <label for="nombre-contacto" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombre-contacto" placeholder="Tu nombre">
+                                <div id="error-nombre" class="text-danger small mt-1 d-none"></div>
                             </div>
                             
+                            <!-- Correo -->
+                            <div class="mb-3">
+                                <label for="correo-contacto" class="form-label">Correo electrónico</label>
+                                <input type="text" class="form-control" id="correo-contacto" placeholder="correo@ejemplo.com">
+                                <div id="error-correo" class="text-danger small mt-1 d-none"></div>
+                            </div>
+                            
+                            <!-- Comentario -->
                             <div class="mb-4">
-                                <label for="pass-login" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="pass-login" placeholder="••••••••">
-                                <!-- Contenedor para el mensaje de error de la contraseña -->
-                                <div id="error-pass" class="text-danger small mt-1 d-none"></div>
+                                <label for="mensaje-contacto" class="form-label">Mensaje o comentario</label>
+                                <textarea class="form-control" id="mensaje-contacto" rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
+                                <div id="error-mensaje" class="text-danger small mt-1 d-none"></div>
                             </div>
                             
-                            <button type="submit" class="btn btn-primary w-100 mb-3">Ingresar</button>
-                            <div class="text-center mt-3">
-                                <small>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></small>
-                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Offcanvas carrito para que no se pierda-->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Tienda Sonido Vivo.</p>
+        </div>
+    </footer>
+
+    <!-- Offcanvas del carrito (Debe ir en todas las páginas que tengan el botón) -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="panelCarrito">
         <div class="offcanvas-header bg-light">
             <h5 class="offcanvas-title">Tu Selección</h5>
@@ -89,18 +98,10 @@
         </div>
     </div>
 
-    <!-- Pie de página -->
-    <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <p class="mb-0">&copy; 2026 Tienda Sonido Vivo.</p>
-        </div>
-    </footer>
-
-    <!--Script Bootstrap para telefono (oh guau)-->
+    <!-- Scripts en orden -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!--Nuestro js-->
     <script src="../js/main.js"></script>
     <script src="../js/catalogo.js"></script>
-    <script src="../js/login.js"></script>
+    <script src="../js/contacto.js"></script>
 </body>
 </html>

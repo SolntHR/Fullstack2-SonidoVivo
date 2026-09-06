@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonido Vivo - Luxury Instruments</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--Css-->
+    <link rel="stylesheet" href="../css/general.css">
+</head>
+<body>
+
+    <!--Encabezado y navBar-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Sonido Vivo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="catalogo_general.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Iniciar Sesión</a></li>
+                </ul>
+                <!-- Botón del carrito que abre el panel lateral -->
+                <button class="btn btn-outline-light ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#panelCarrito">
+                    Carrito (<span id="contador-carrito">0</span>)
+                </button>
+            </div>
+        </div>
+        </nav>
+    </header>
+    
+
+    <!-- Sección principal con Carrusel de Fondo -->
+    <header class="position-relative w-100 hero-carrusel">
+        
+        <!-- Capa 1: Carrusel Autoplay (Fondo) -->
+        <div id="carruselHeader" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-pause="false">
+            <div class="carousel-inner h-100">
+                <!-- Imagen 1 -->
+                <div class="carousel-item active h-100" data-bs-interval="3500">
+                    <img src="../img/banner1.png" class="d-block w-100 h-100" alt="Fondo Sonido Vivo 1">
+                </div>
+                <!-- Imagen 2 -->
+                <div class="carousel-item h-100" data-bs-interval="3500">
+                    <img src="../img/banner2.png" class="d-block w-100 h-100" alt="Fondo Sonido Vivo 2">
+                </div>
+                <!-- Imagen 3 -->
+                <div class="carousel-item h-100" data-bs-interval="3500">
+                    <img src="../img/banner3.png" class="d-block w-100 h-100" alt="Fondo Sonido Vivo 3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Capa 2: Filtro oscuro -->
+        <div class="position-absolute top-0 start-0 w-100 h-100 hero-capa-oscura"></div>
+
+        <!-- Capa 3: Contenido estático sobre las imágenes -->
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center text-center text-white hero-contenido">
+            <div class="container">
+                <h1 class="display-4 fw-bold, text-gold mb-0">Bienvenido a Sonido Vivo</h1>
+                <p class="lead">Encuentra los mejores instrumentos y equipos de audio para tu proyecto musical.</p>
+            </div>
+        </div>
+        
+    </header>
+
+
+    <!-- BUSCAR POR CATEGORIA-->
+    <section class="container my-5 py-5">
+        <div class="row mb-4 align-items-end">
+            <div class="col-md-8">
+                <span class="text-primary fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">Compra por categoría</span>
+                <h2 class="display-5 fw-bold mb-0 text-dark">Encuentra lo que necesitas para tocar</h2>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0 text-muted">
+                <p class="mb-0 small">Explora instrumentos, audio y accesorios organizados para llegar rápidamente al producto que estás buscando.</p>
+            </div>
+        </div>
+
+        <!-- Carrusel Horizontal -->
+        <div class="d-flex flex-nowrap overflow-auto gap-4 pb-4" style="scrollbar-width: thin;">
+            
+            <!-- Tarjeta: Todos los productos -->
+            <a href="catalogo_general.html" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/todos.webp" alt="Todos los productos" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Todos los productos</h3>
+                    <p class="card-text small text-light mb-0">Explora el catálogo completo <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Guitarras Eléctricas -->
+            <a href="catalogo_general.html?categoria=Guitarras Eléctricas" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/guitarras/guitarra_e.avif" alt="Guitarras Eléctricas" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Guitarras Eléctricas</h3>
+                    <p class="card-text small text-light mb-0">Modelos sólidos, hollow y semi-hollow <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Guitarras Acústicas -->
+            <a href="catalogo_general.html?categoria=Guitarras Acústicas" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/guitarras/guitarracatalogoHD.jpg" alt="Guitarras Acústicas" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Guitarras Acústicas</h3>
+                    <p class="card-text small text-light mb-0">Clásicas, electroacústicas y folk <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Bajos Eléctricos -->
+            <a href="catalogo_general.html?categoria=Bajos Eléctricos" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/bajos/bajos.jpg" alt="Bajos Eléctricos" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Bajos Eléctricos</h3>
+                    <p class="card-text small text-light mb-0">4, 5 y 6 cuerdas <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Baterías -->
+            <a href="catalogo_general.html?categoria=Baterías" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/baterias/drumscatalogoHD.jpg" alt="Baterías" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Baterías</h3>
+                    <p class="card-text small text-light mb-0">Acústicas, electrónicas y percusión <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Teclados y Pianos -->
+            <a href="catalogo_general.html?categoria=Teclados y Pianos" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/teclados/pianocatalogoHD.jpg" alt="Teclados y Pianos" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Teclados y Pianos</h3>
+                    <p class="card-text small text-light mb-0">Sintetizadores, controladores y pianos <span class="float-end">→</span></p>
+                </div>
+            </a>
+            
+            <!-- Tarjeta: Amplificadores -->
+            <a href="catalogo_general.html?categoria=Amplificadores" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/amplificadores/amplificadores.jpg" alt="Amplificadores" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Amplificadores</h3>
+                    <p class="card-text small text-light mb-0">Cabezales, combos y gabinetes <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Micrófonos -->
+            <a href="catalogo_general.html?categoria=Micrófonos" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/microfonos/microfonos.jpg" alt="Micrófonos" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Micrófonos</h3>
+                    <p class="card-text small text-light mb-0">Dinámicos, condensador y cintas <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Pedales de Efectos -->
+            <a href="catalogo_general.html?categoria=Pedales de Efectos" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/pedales/pedales.avif" alt="Pedales de Efectos" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Pedales de Efectos</h3>
+                    <p class="card-text small text-light mb-0">Distorsión, modulación y multiefectos <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Accesorios -->
+            <a href="catalogo_general.html?categoria=Accesorios" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/accesorios/accesorios.avif" alt="Accesorios" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Accesorios</h3>
+                    <p class="card-text small text-light mb-0">Cables, cuerdas, uñetas y fundas <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+            <!-- Tarjeta: Estudio y Grabación -->
+            <a href="catalogo_general.html?categoria=Estudio y Grabación" class="card text-white text-decoration-none border-0 shadow-sm flex-shrink-0 tarjeta-categoria" style="width: 320px; min-height: 420px;">
+                <img src="../img/estudio/audiocatalogoHD.jpg" alt="Estudio y Grabación" class="img-fondo">
+                <div class="capa-gradiente"></div>
+                <div class="card-body d-flex flex-column justify-content-end p-4 contenido-texto">
+                    <h3 class="card-title fw-bold text-white text-uppercase">Estudio y Grabación</h3>
+                    <p class="card-text small text-light mb-0">Interfaces, monitores y software <span class="float-end">→</span></p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+
+
+        <!-- PRODUCTOS DESTACADOS-->
+        
+        <main class="container my-5 py-5">
+            <h2 class="text-center mb-5 text-gold">Productos Destacados</h2>
+            
+            <!-- Contenedor vacío. JavaScript inyectará las 3 tarjetas aquí -->
+            <div class="row justify-content-center" id="contenedor-destacados">
+            </div>
+        </main>
+
+    <!--carrito-->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="panelCarrito">
+        <div class="offcanvas-header bg-light">
+            <h5 class="offcanvas-title">Tu Selección</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <ul id="lista-carrito" class="list-group mb-3 flex-grow-1"></ul>
+            <div class="mt-auto border-top pt-3">
+                <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+                    <span>Total:</span>
+                    <span id="total-carrito">$0</span>
+                </div>
+                <button class="btn btn-success w-100">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Pie de página -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Tienda Sonido Vivo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!--Script Bootstrap para telefono (oh guau)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Nuestro js-->
+    <script src="../js/main.js"></script>
+    <script src="../js/catalogo.js"></script>
+</body>
+</html>

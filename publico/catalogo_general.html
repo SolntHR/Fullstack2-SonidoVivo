@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colección Completa - Sonido Vivo</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--Css-->
+    <link rel="stylesheet" href="../css/general.css">
+</head>
+<body>
+    <!-- navBar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Sonido Vivo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="catalogo_general.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Iniciar Sesión</a></li>
+                </ul>
+                <!-- Botón del carrito que abre el panel lateral -->
+                <button class="btn btn-outline-light ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#panelCarrito">
+                    Carrito (<span id="contador-carrito">0</span>)
+                </button>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <!--Contenido catálogo -->
+    <main class="container my-5">
+        <h1 class="text-center mb-5">Nuestro Catálogo</h1>
+        
+        <!-- Js -->
+        <div class="row" id="contenedor-productos">
+            <!-- todo todo -->
+        </div>
+    </main>
+
+    <!--Pie  de página-->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Tienda Sonido Vivo.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/catalogo.js"></script>
+
+
+    <!-- Panel lateral del Carrito -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="panelCarrito">
+        <div class="offcanvas-header bg-light">
+            <h5 class="offcanvas-title">Tu Selección</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <!-- Aquí se mostrarán los elementos seleccionados -->
+            <ul id="lista-carrito" class="list-group mb-3 flex-grow-1"></ul>
+            
+            <!-- Total y botones de acción -->
+            <div class="mt-auto border-top pt-3">
+                <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+                    <span>Total:</span>
+                    <span id="total-carrito">$0</span>
+                </div>
+                <button class="btn btn-success w-100" onclick="alert('Ir a pagar')">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
