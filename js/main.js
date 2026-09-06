@@ -9,7 +9,7 @@ const productos = [
         "stock": 8,
         "precio": 129990,
         "descripcion breve": "Tapa de abeto, aros y fondo de meranti. Ideal para iniciantes.",
-        "imagen": null
+        "imagen": "img/yamahaf310.png"
     },
     {
         "codigo": "GA002",
@@ -20,7 +20,7 @@ const productos = [
         "stock": 5,
         "precio": 189990,
         "descripcion breve": "Tapa de abeto macizo, brazo de caoba. Sonido cálido y proyectado.",
-        "imagen": null
+        "imagen": "img/guitarras/Fender CD-60S.jpg"
     },
     {
         "codigo": "GA003",
@@ -31,7 +31,7 @@ const productos = [
         "stock": 10,
         "precio": 89990,
         "descripcion breve": "Nailon, tapa de abeto. Ideal para estudio y flamenco.",
-        "imagen": null
+        "imagen": "img/guitarras/Yamaha C40.jpg"
     },
     {
         "codigo": "GA004",
@@ -629,19 +629,19 @@ function renderizarDetalle() {
         <div class="row">
             <!-- Columna Izquierda: Imagen -->
             <div class="col-md-6 mb-4 mb-md-0">
-                <div class="bg-secondary text-white d-flex align-items-center justify-content-center h-100" style="min-height: 400px; border-radius: 8px;">
-                    ${producto.imagen ? `<img src="${producto.imagen}" class="img-fluid" alt="${producto["nombre del producto"]}">` : '<span>Imagen no disponible</span>'}
+                <div class="bg-dark-luxury text-gold d-flex align-items-center justify-content-center h-100 border border-gold" style="min-height: 400px; border-radius: 8px;">
+                    ${producto.imagen ? `<img src="${producto.imagen}" class="img-fluid" alt="${producto["nombre del producto"]}">` : '<span class="text-secondary">Imagen no disponible</span>'}
                 </div>
             </div>
             
             <!-- Columna Derecha: Información Ampliada -->
             <div class="col-md-6 d-flex flex-column justify-content-center">
-                <h2 class="fw-bold mb-2">${producto["nombre del producto"]}</h2>
-                <h5 class="text-muted mb-4">${producto.marca} | Modelo: ${producto.modelo}</h5>
+                <h2 class="fw-bold mb-2 text-light">${producto["nombre del producto"]}</h2>
+                <h5 class="text-gold mb-4">${producto.marca} | Modelo: ${producto.modelo}</h5>
                 
-                <h3 class="text-primary fw-bold mb-4">$${producto.precio.toLocaleString('es-CL')}</h3>
+                <h3 class="text-gold fw-bold mb-4">$${producto.precio.toLocaleString('es-CL')}</h3>
                 
-                <p class="fs-5 mb-4">${producto["descripcion breve"]}</p>
+                <p class="fs-5 mb-4 text-secondary">${producto["descripcion breve"]}</p>
                 
                 <div class="mb-4">
                     <span class="badge ${producto.stock > 0 ? 'bg-success' : 'bg-danger'} p-2 fs-6">
@@ -652,7 +652,7 @@ function renderizarDetalle() {
                 
                 <hr class="mb-4">
                 
-                <button class="btn btn-primary btn-lg w-100" onclick="agregarAlCarrito('${producto.codigo}')">
+                <button class="btn btn-gold btn-lg w-100 fw-bold" onclick="agregarAlCarrito('${producto.codigo}')">
                     Añadir al Carrito
                 </button>
             </div>
@@ -688,7 +688,10 @@ if (contenedorDestacados) {
                     
                     <!-- Espacio para la imagen -->
                     <div class="bg-dark-luxury text-white text-center d-flex align-items-center justify-content-center" style="height: 220px;">
-                        <span style="font-size: 5rem; opacity: 0.5;">🎸</span>
+                        ${producto.imagen 
+                            ? `<img src="${producto.imagen}" class="img-fluid h-100 p-3" style="object-fit: contain;" alt="${producto.marca} ${producto.modelo}">` 
+                            : '<span style="font-size: 5rem; opacity: 0.5;">🎸</span>'
+                        }
                     </div>
                     
                     <div class="card-body d-flex flex-column">
@@ -698,12 +701,8 @@ if (contenedorDestacados) {
                     </div>
                     
                     <div class="card-footer bg-transparent border-top-0 pb-4 pt-0">
-                        <!-- Contenedor flex para alinear los dos botones -->
                         <div class="d-flex gap-2">
-                            <!-- Enlace a la vista de detalle pasando el código del producto -->
                             <a href="detalle.html?codigo=${producto.codigo}" class="btn btn-outline-gold w-50 fw-bold">Ver Detalles</a>
-                            
-                            <!-- Botón de acción para el carrito -->
                             <button class="btn btn-gold w-50 fw-bold" onclick="agregarAlCarrito('${producto.codigo}')">
                                 Agregar
                             </button>
@@ -714,4 +713,38 @@ if (contenedorDestacados) {
             </div>
         `;
     });
+}
+/*
+----------------------------- SCROLL AUTOMÁTICO CATEGORÍAS ------------------------
+*/
+const contenedorCategorias = document.getElementById('contenedor-categorias');
+const zonaIzq = document.getElementById('zona-scroll-izq');
+const zonaDer = document.getElementById('zona-scroll-der');
+let intervaloScroll;
+
+if (contenedorCategorias && zonaIzq && zonaDer) {
+    // Función que mueve el scroll fluidamente
+    const iniciarScroll = (direccion) => {
+        // Desactivamos temporalmente el scroll-behavior suave para que no compita con el setInterval
+        contenedorCategorias.style.scrollBehavior = 'auto';
+        
+        intervaloScroll = setInterval(() => {
+            // Ajusta el '6' para que el movimiento sea más rápido o más lento
+            contenedorCategorias.scrollLeft += direccion * 6; 
+        }, 10);
+    };
+
+    const detenerScroll = () => {
+        clearInterval(intervaloScroll);
+        // Devolvemos el scroll suave por si el usuario decide hacer scroll manual
+        contenedorCategorias.style.scrollBehavior = 'smooth';
+    };
+
+    // Eventos para la zona izquierda
+    zonaIzq.addEventListener('mouseenter', () => iniciarScroll(-1));
+    zonaIzq.addEventListener('mouseleave', detenerScroll);
+    
+    // Eventos para la zona derecha
+    zonaDer.addEventListener('mouseenter', () => iniciarScroll(1));
+    zonaDer.addEventListener('mouseleave', detenerScroll);
 }

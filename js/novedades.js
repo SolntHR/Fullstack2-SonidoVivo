@@ -42,15 +42,15 @@ function renderizarBlog() {
     publicaciones.forEach(post => {
         contenedorBlog.innerHTML += `
             <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 250px;">
+                <div class="card h-100 shadow-sm card-luxury">
+                    <div class="bg-dark-luxury text-gold d-flex align-items-center justify-content-center" style="height: 250px;">
                         <span>${post.imagenPlaceholder}</span>
                     </div>
                     <div class="card-body d-flex flex-column">
-                        <span class="badge ${post.categoria === 'Guías' ? 'bg-primary' : 'bg-dark'} mb-2 align-self-start">${post.categoria}</span>
-                        <h4 class="card-title fw-bold">${post.titulo}</h4>
-                        <p class="card-text text-muted">${post.resumen}</p>
-                        <a href="novedades_detalle.html?id=${post.id}" class="btn btn-outline-dark mt-auto">Leer artículo completo</a>
+                        <span class="badge mb-2 align-self-start" style="background-color: #D4AF37; color: #0a0a0a;">${post.categoria}</span>
+                        <h4 class="card-title fw-bold text-light">${post.titulo}</h4>
+                        <p class="card-text text-secondary">${post.resumen}</p>
+                        <a href="novedades_detalle.html?id=${post.id}" class="btn btn-outline-gold mt-auto">Leer artículo completo</a>
                     </div>
                 </div>
             </div>
@@ -90,17 +90,17 @@ function renderizarPostCompleto() {
                     <p class="text-muted">Por Equipo Sonido Vivo | Publicado el ${post.fecha}</p>
                 </div>
 
-                <div class="bg-secondary text-white d-flex align-items-center justify-content-center rounded shadow-sm mb-5" style="height: 350px;">
+                <div class="bg-dark-luxury text-gold d-flex align-items-center justify-content-center rounded shadow-sm mb-5 border border-gold" style="height: 350px;">
                     <span>${post.imagenPlaceholder}</span>
                 </div>
 
-                <article class="fs-5" style="line-height: 1.8;">
+                <article class="fs-5 text-light" style="line-height: 1.8;">
                     ${post.contenido}
                     
-                    <div class="bg-dark text-white p-4 rounded mt-5 text-center">
-                        <h5 class="mb-3">¿Te inspiraste?</h5>
+                    <div class="bg-black text-white p-4 rounded mt-5 text-center border border-gold">
+                        <h5 class="mb-3 text-gold">¿Te inspiraste?</h5>
                         <p class="fs-6 text-light mb-4">Revisa nuestro catálogo para encontrar el equipamiento ideal para tu sonido.</p>
-                        <a href="catalogo_general.html" class="btn btn-outline-light">Ir al Catálogo</a>
+                        <a href="catalogo_general.html" class="btn btn-outline-gold">Ir al Catálogo</a>
                     </div>
                 </article>
             </div>

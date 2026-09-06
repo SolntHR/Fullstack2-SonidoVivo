@@ -3,57 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro - Sonido Vivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/general.css">
 </head>
-<body>
-    
+<body class="bg-patron-infinito d-flex flex-column min-vh-100">
+    <header class="border-bottom border-gold border-2">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top shadow border-bottom border-gold">
+            <div class="container-fluid">
+                <a class="navbar-brand text-gold fw-bold p-0" href="index.html">
+                    <img src="Imagenes/logosonidovivo.png" alt="Sonido Vivo" width="100" height="70" style="object-fit: contain;">
+                </a>
+                <button class="navbar-toggler border-gold" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link fs-5 px-3 fw-medium" href="catalogo_general.html">Catálogo</a></li>
+                        <li class="nav-item"><a class="nav-link fs-5 px-3 fw-medium" href="nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link fs-5 px-3 fw-medium" href="contacto.html">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link fs-5 px-3 fw-medium" href="novedades.html">Novedades</a></li>
+                        <li class="nav-item"><a class="nav-link fs-5 px-3 fw-medium" href="login.html">Iniciar Sesión</a></li>
+                    </ul>
+                    <button class="btn btn-outline-gold ms-lg-3 my-2 my-lg-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#panelCarrito">
+                        Carrito (<span id="contador-carrito">0</span>)
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <main class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
-                <div class="card shadow">
+                <div class="card card-luxury shadow-lg">
                     <div class="card-body p-4 p-md-5">
-                        
-                        <h2 class="text-center mb-4">Registro de Usuario</h2>
-                        
+                        <h2 class="text-center mb-4 text-gold text-uppercase">Registro de Usuario</h2>
                         <form id="form-registro">
-                        
-                            <!--RUT-->
                             <div class="mb-3">
-                                <label for="run-registro" class="form-label">RUN (Sin puntos ni guion)</label>
+                                <label for="run-registro" class="form-label text-secondary">RUN (Sin puntos ni guion)</label>
                                 <input type="text" class="form-control" id="run-registro" placeholder="123456789">
                                 <div id="error-run" class="text-danger small mt-1 d-none"></div>
                             </div>
-
-                            <!--Nombre y apellido-->
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="nombre-registro" class="form-label">Nombre</label>
+                                    <label for="nombre-registro" class="form-label text-secondary">Nombre</label>
                                     <input type="text" class="form-control" id="nombre-registro">
                                     <div id="error-nombre" class="text-danger small mt-1 d-none"></div>
                                 </div>
                                 <div class="col-md-6 mt-3 mt-md-0">
-                                    <label for="apellido-registro" class="form-label">Apellidos</label>
+                                    <label for="apellido-registro" class="form-label text-secondary">Apellidos</label>
                                     <input type="text" class="form-control" id="apellido-registro">
                                     <div id="error-apellido" class="text-danger small mt-1 d-none"></div>
                                 </div>
                             </div>
-
-                            <!--Correo y fecha de nacimiento-->
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="email-registro" class="form-label">Correo Electrónico</label>
+                                    <label for="email-registro" class="form-label text-secondary">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="email-registro">
                                     <div id="error-email" class="text-danger small mt-1 d-none"></div>
                                 </div>
                                 <div class="col-md-6 mt-3 mt-md-0">
-                                    <label for="fecha-registro" class="form-label">Fecha de Nacimiento (Opcional)</label>
+                                    <label for="fecha-registro" class="form-label text-secondary">Fecha de Nacimiento (Opcional)</label>
                                     <input type="date" class="form-control" id="fecha-registro">
                                 </div>
                             </div>
-
-                            <!-- Tipo de usuario -->
                             <div class="mb-3">
-                                <label for="tipo-registro" class="form-label">Tipo de Usuario</label>
+                                <label for="tipo-registro" class="form-label text-secondary">Tipo de Usuario</label>
                                 <select class="form-select" id="tipo-registro">
                                     <option value="">Seleccione un perfil...</option>
                                     <option value="cliente">Cliente</option>
@@ -61,46 +77,60 @@
                                 </select>
                                 <div id="error-tipo" class="text-danger small mt-1 d-none"></div>
                             </div>
-
-                            <!--Región y comuna-->
                             <div class="mb-3">
-                                <label for="region-registro" class="form-label">Región</label>
+                                <label for="region-registro" class="form-label text-secondary">Región</label>
                                 <select class="form-select" id="region-registro">
                                     <option value="">Seleccione una región...</option>
-                                    <!-- JavaScript llenará esto -->
                                 </select>
                                 <div id="error-region" class="text-danger small mt-1 d-none"></div>
                             </div>
-
                             <div class="mb-3">
-                                <label for="comuna-registro" class="form-label">Comuna</label>
+                                <label for="comuna-registro" class="form-label text-secondary">Comuna</label>
                                 <select class="form-select" id="comuna-registro" disabled>
                                     <option value="">Seleccione una comuna...</option>
-                                    <!-- JavaScript llenará esto al cambiar la región -->
                                 </select>
                                 <div id="error-comuna" class="text-danger small mt-1 d-none"></div>
                             </div>
-
-                            <!-- Dirección -->
                             <div class="mb-4">
-                                <label for="direccion-registro" class="form-label">Dirección</label>
+                                <label for="direccion-registro" class="form-label text-secondary">Dirección</label>
                                 <input type="text" class="form-control" id="direccion-registro">
                                 <div id="error-direccion" class="text-danger small mt-1 d-none"></div>
                             </div>
-
-                            <button type="submit" class="btn btn-primary w-100">Crear Cuenta</button>
-                    </form>
+                            <button type="submit" class="btn btn-gold w-100 fw-bold text-uppercase">Crear Cuenta</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+    </main>
+
+    <div class="offcanvas offcanvas-end offcanvas-luxury" tabindex="-1" id="panelCarrito">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-gold">Tu Selección</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <ul id="lista-carrito" class="list-group mb-3 flex-grow-1"></ul>
+            <div class="mt-auto border-top border-gold pt-3">
+                <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+                    <span>Total:</span>
+                    <span id="total-carrito" class="text-gold">$0</span>
+                </div>
+                <button class="btn btn-gold w-100 fw-bold text-uppercase">Finalizar Compra</button>
+            </div>
+        </div>
     </div>
-</main>
 
+    <footer class="bg-black text-white text-center py-4 mt-auto border-top border-gold border-2">
+        <div class="container">
+            <p class="mb-1 text-gold">&copy; 2026 Sonido Vivo. Colección Exclusiva.</p>
+            <p class="mb-0 text-secondary small">Desarrollado para la evaluación de Desarrollo FullStack II</p>
+        </div>
+    </footer>
 
-    <!-- Al final de tu registro.html -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/main.js"></script> <!-- Carga las funciones globales primero -->
-    <script src="../js/registro.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/catalogo.js"></script>
+    <script src="js/registro.js"></script>
 </body>
 </html>

@@ -47,10 +47,18 @@ if (formLogin) {
             ocultarError(errorPass);
         }
 
-        // Si todas las validaciones pasan, se puede procesar el inicio de sesión
         if (formularioValido) {
-            alert('¡Validación exitosa! Iniciando sesión...');
-            // En el futuro, aquí se redirigirá al área administrativa o cuenta de usuario
+            const admin = (typeof usuarios !== 'undefined')
+                ? usuarios.find(u => u.correo.toLowerCase() === email.toLowerCase() && u.rol === 'Administrador')
+                : null;
+
+            if (admin) {
+                localStorage.setItem('sesionSonidoVivo', JSON.stringify({ rol: 'admin', correo: email }));
+                window.location.href = 'admin/index_admin.html';
+            } else {
+                localStorage.setItem('sesionSonidoVivo', JSON.stringify({ rol: 'cliente', correo: email }));
+                window.location.href = 'index.html';
+            }
         }
     });
 }

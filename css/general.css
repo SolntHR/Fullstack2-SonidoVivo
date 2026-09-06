@@ -1,12 +1,10 @@
-/* =========================================
-   1. TEMA LUXURY Y COLORES BASE
-   ========================================= */
+/* Estilos Luxury unificados - Sonido Vivo */
+
 body.bg-luxury {
     background-color: #0a0a0a !important;
     color: #e0e0e0 !important;
 }
 
-/* Color Dorado Premium */
 .text-gold {
     color: #D4AF37 !important;
 }
@@ -15,15 +13,11 @@ body.bg-luxury {
     border-color: #D4AF37 !important;
 }
 
-/* Fondos oscuros para cajas y tarjetas */
 .bg-dark-luxury {
     background-color: #141414 !important;
     border: 1px solid #2a2a2a;
 }
 
-/* =========================================
-   2. BOTONES
-   ========================================= */
 .btn-gold {
     background-color: #D4AF37 !important;
     color: #0a0a0a !important;
@@ -49,13 +43,11 @@ body.bg-luxury {
     color: #0a0a0a !important;
 }
 
-/* =========================================
-   3. TARJETAS, LISTAS Y FORMULARIOS
-   ========================================= */
 .card-luxury {
     background-color: #111 !important;
     border: 1px solid #333 !important;
     transition: transform 0.3s, border-color 0.3s;
+    color: #e0e0e0;
 }
 
 .card-luxury:hover {
@@ -82,9 +74,23 @@ body.bg-luxury {
     box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25) !important;
 }
 
-/* =========================================
-   4. INDEX: CARRUSEL PRINCIPAL (HERO)
-   ========================================= */
+.form-control::placeholder {
+    color: #888 !important;
+}
+
+.navbar .nav-link {
+    color: #e0e0e0 !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #D4AF37 !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.35);
+}
+
 .titulo-principal {
     font-size: 5rem;
     font-weight: 900;
@@ -101,27 +107,21 @@ body.bg-luxury {
     overflow: hidden;
 }
 
-/* Evita que las imágenes del carrusel se deformen */
 .hero-carrusel .carousel-item img {
     object-fit: cover;
 }
 
-/* Filtro oscuro para dar contraste al texto blanco */
 .hero-capa-oscura {
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
-/* Mantiene el texto por encima del carrusel y del filtro oscuro */
 .hero-contenido {
     z-index: 2;
 }
 
-/* =========================================
-   5. INDEX: CATEGORÍAS (GALERÍA)
-   ========================================= */
 .tarjeta-categoria {
-    overflow: hidden; /* Evita que el zoom se salga de los bordes */
+    overflow: hidden;
     position: relative;
 }
 
@@ -131,17 +131,15 @@ body.bg-luxury {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Evita que la imagen se deforme al estirarse */
+    object-fit: cover;
     transition: transform 0.5s ease;
     z-index: 1;
 }
 
-/* Al pasar el mouse, la imagen crece un 10% (Corregido a .img-fondo) */
 .tarjeta-categoria:hover .img-fondo {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
-/* Gradiente para que el texto blanco resalte siempre */
 .tarjeta-categoria .capa-gradiente {
     position: absolute;
     top: 0;
@@ -154,12 +152,44 @@ body.bg-luxury {
 
 .tarjeta-categoria .contenido-texto {
     position: relative;
-    z-index: 3; /* Mantiene el texto por encima del fondo y el gradiente */
+    z-index: 3;
 }
 
-/* =========================================
-   6. ANIMACIONES Y PATRONES INFINITOS
-   ========================================= */
+.offcanvas-luxury {
+    background-color: #111 !important;
+    color: #e0e0e0 !important;
+    border-left: 1px solid #D4AF37 !important;
+}
+
+.offcanvas-luxury .offcanvas-header {
+    border-bottom: 1px solid #D4AF37;
+}
+
+.offcanvas-luxury .list-group-item {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: #e0e0e0;
+}
+
+.breadcrumb-item a {
+    color: #D4AF37;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #aaa;
+}
+
+.table-luxury {
+    color: #e0e0e0;
+}
+
+.table-luxury > :not(caption) > * > * {
+    background-color: #141414;
+    color: #e0e0e0;
+    border-color: #333;
+}
+
 @keyframes moverFondoDiagonal {
     0% {
         background-position: 0 0;
@@ -170,12 +200,59 @@ body.bg-luxury {
 }
 
 .bg-patron-infinito {
-    /* Combinamos una capa oscura semi-transparente con la imagen de fondo */
-    background-image: 
-        linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.75)), 
-        url('Imagenes/bg-logos.png'); 
+    background-image:
+        linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.75)),
+        url('../img/bg-logos.png');
     background-repeat: repeat;
-    background-size: 800px; 
-    background-color: #0a0a0a; 
-    animation: moverFondoDiagonal 40s linear infinite; 
+    background-size: 800px;
+    background-color: #0a0a0a;
+    animation: moverFondoDiagonal 40s linear infinite;
+}
+
+/* Ocultar barra de scroll nativa para el carrusel de categorías */
+.ocultar-scrollbar {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.ocultar-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari y Opera */
+}
+
+/* Zonas interactivas para el Auto-Scroll */
+.zona-scroll {
+    position: absolute;
+    top: 0;
+    bottom: 24px; /* Respeta el padding inferior (pb-4) del contenedor */
+    width: 120px;
+    z-index: 10;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Invisibles hasta que pasas el mouse */
+}
+
+.zona-scroll:hover {
+    opacity: 1; /* Aparecen suavemente al pasar el cursor */
+}
+
+.zona-scroll-izq {
+    left: 0;
+    background: linear-gradient(to right, rgba(10,10,10,0.95), transparent);
+}
+
+.zona-scroll-der {
+    right: 0;
+    background: linear-gradient(to left, rgba(10,10,10,0.95), transparent);
+}
+
+.flecha-indicador {
+    color: #D4AF37;
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
+    transition: transform 0.2s ease;
+}
+
+.zona-scroll:hover .flecha-indicador {
+    transform: scale(1.1); /* Pequeño efecto de zoom al apuntar */
 }
