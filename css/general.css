@@ -276,8 +276,9 @@ body.bg-luxury {
     border-radius: 16px;
 }
 
+
 .breadcrumb {
-  background-color: transparent !important;
-  padding: 0;
-  margin-bottom: 1.5rem;
+    background-color: transparent !important;
+    padding: 0;
+    margin-bottom: 1.5rem;
 }
