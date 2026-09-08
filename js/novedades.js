@@ -1,4 +1,3 @@
-// Arreglo de publicaciones
 const publicaciones = [
     {
         id: 1,
@@ -13,7 +12,7 @@ const publicaciones = [
             <h3 class="fw-bold mt-4 mb-3">Monitores vs Audífonos</h3>
             <p>Aunque los audífonos son excelentes para grabar sin retroalimentación, unos buenos monitores de estudio te darán una respuesta "plana", crucial para que tu mezcla suene bien en cualquier sistema de sonido.</p>
         `,
-        imagenPlaceholder: "[Imagen: Equipos de Home Studio]"
+        imagenPlaceholder: "../img/monitores-de-estudio-en-home-studio.jpg"
     },
     {
         id: 2,
@@ -28,23 +27,22 @@ const publicaciones = [
             <h3 class="fw-bold mt-4 mb-3">Equipamiento recomendado para recrear el tono</h3>
             <p>Si buscas experimentar con estos contrastes en tu propia música, la clave está en el control de la distorsión. Recomendamos el uso de guitarras de rango extendido, pasadas por pedales de overdrive que ajusten los medios antes de golpear un amplificador de alta ganancia.</p>
         `,
-        imagenPlaceholder: "[Imagen Principal: Escenario oscuro con iluminación de contraste]"
+        imagenPlaceholder: "../img/donkey-sound-effects-5.avif"
     }
 ];
 
-// Función para renderizar la lista de tarjetas en novedades.html
 function renderizarBlog() {
     const contenedorBlog = document.getElementById("contenedor-blog");
     if (!contenedorBlog) return;
 
-    contenedorBlog.innerHTML = ""; // Limpiamos el contenedor
+    contenedorBlog.innerHTML = "";
     
     publicaciones.forEach(post => {
         contenedorBlog.innerHTML += `
             <div class="col-md-6 mb-4">
                 <div class="card h-100 shadow-sm card-luxury">
                     <div class="bg-dark-luxury text-gold d-flex align-items-center justify-content-center" style="height: 250px;">
-                        <span>${post.imagenPlaceholder}</span>
+                        <img src="${post.imagenPlaceholder}" alt="${post.titulo}" class="w-100 h-100" style="object-fit: cover;"></span>
                     </div>
                     <div class="card-body d-flex flex-column">
                         <span class="badge mb-2 align-self-start" style="background-color: #D4AF37; color: #0a0a0a;">${post.categoria}</span>
@@ -58,7 +56,6 @@ function renderizarBlog() {
     });
 }
 
-// Función para renderizar el post completo en novedades_detalle.html
 function renderizarPostCompleto() {
     const contenedorPost = document.getElementById("contenedor-post");
     if (!contenedorPost) return;
@@ -108,6 +105,5 @@ function renderizarPostCompleto() {
     `;
 }
 
-// Ejecutamos las funciones al cargar el archivo
 renderizarBlog();
 renderizarPostCompleto();

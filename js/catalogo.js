@@ -1,7 +1,4 @@
 
-/*
------------------------------ CATALOGO Y CARRITO ------------------------
-*/
 function renderizarCatalogo() {
     const contenedor = document.getElementById("contenedor-productos");
     if (!contenedor) return;

@@ -56,7 +56,6 @@ function prepararEdicionUser(rut) {
     document.getElementById('user-correo').value = user.correo;
     document.getElementById('user-rol').value = user.rol;
 
-    // LÓGICA DE SEGURIDAD: Ocultamos el campo de contraseña al editar
     const contenedorPassword = document.getElementById('contenedor-user-password');
     if (contenedorPassword) {
         contenedorPassword.classList.add('d-none');

@@ -1,20 +1,14 @@
-// Función matemática para validar el RUT chileno (Módulo 11)
 function validarDigitoVerificador(run) {
-    // Si el largo es menor a 8 (ej: 1.000.000-0 sin formato), es inválido
     if (run.length < 8) return false;
 
-    // Separar el cuerpo del dígito verificador
     const cuerpo = run.slice(0, -1);
     const dvIngresado = run.slice(-1).toUpperCase();
 
-    // Validar que el cuerpo sea solo números
     if (!/^[0-9]+$/.test(cuerpo)) return false;
 
-    // Calcular el dígito verificador esperado
     let suma = 0;
     let multiplicador = 2;
 
-    // Recorrer el cuerpo de atrás hacia adelante
     for (let i = cuerpo.length - 1; i >= 0; i--) {
         suma += parseInt(cuerpo[i]) * multiplicador;
         multiplicador = multiplicador === 7 ? 2 : multiplicador + 1;
@@ -23,20 +17,16 @@ function validarDigitoVerificador(run) {
     const resto = suma % 11;
     const dvCalculado = 11 - resto;
 
-    // Determinar el valor final del DV calculado
     let dvEsperado = dvCalculado.toString();
     if (dvCalculado === 11) dvEsperado = '0';
     if (dvCalculado === 10) dvEsperado = 'K';
 
-    // Comparar con el ingresado
     return dvEsperado === dvIngresado;
 }
 
-// Cuando el usuario intente enviar el formulario
 
 const formRegistro = document.getElementById('form-registro');
 
-// Arreglo de objetos con Regiones y sus respectivas Comunas
 const datosTerritoriales = [
     {
         region: "Región Metropolitana de Santiago",
@@ -52,13 +42,11 @@ const datosTerritoriales = [
     }
 ];
 
-// Capturamos los elementos del DOM
 const selectRegion = document.getElementById('region-registro');
 const selectComuna = document.getElementById('comuna-registro');
 
-// Función para cargar las regiones al abrir la página
 function inicializarRegiones() {
-    if (!selectRegion) return; // Por si no estamos en la página de registro
+    if (!selectRegion) return;
 
     datosTerritoriales.forEach(item => {
         const opcion = document.createElement('option');
@@ -68,19 +56,15 @@ function inicializarRegiones() {
     });
 }
 
-// Evento que detecta cuando el usuario cambia la región
 if (selectRegion) {
     selectRegion.addEventListener('change', function() {
         const regionSeleccionada = this.value;
         
-        // Limpiamos y reiniciamos el selector de comunas
         selectComuna.innerHTML = '<option value="">Seleccione una comuna...</option>';
         
         if (regionSeleccionada !== "") {
-            // Buscamos el objeto de la región seleccionada
             const datosRegion = datosTerritoriales.find(item => item.region === regionSeleccionada);
             
-            // Llenamos las comunas correspondientes
             datosRegion.comunas.forEach(comuna => {
                 const opcion = document.createElement('option');
                 opcion.value = comuna;
@@ -88,16 +72,13 @@ if (selectRegion) {
                 selectComuna.appendChild(opcion);
             });
             
-            // Habilitamos el selector de comunas
             selectComuna.disabled = false;
         } else {
-            // Si vuelve a "Seleccione una región...", deshabilitamos comunas
             selectComuna.disabled = true;
         }
     });
 }
 
-// Ejecutamos la carga inicial
 inicializarRegiones();
 
 if (formRegistro) {
@@ -106,11 +87,9 @@ if (formRegistro) {
         
         let formularioValido = true;
 
-        // 1. Validar RUN (Sin puntos ni guion)
         const inputRun = document.getElementById('run-registro').value.trim();
         const errorRun = document.getElementById('error-run');
         
-        // Expresión regular: solo números seguidos de un número o una 'K' (ignorando mayúsculas/minúsculas)
         const regexRun = /^[0-9]+[0-9Kk]$/;
 
         if (inputRun === '') {
@@ -126,7 +105,6 @@ if (formRegistro) {
             ocultarError(errorRun);
         }
 
-        // 2. Validar Nombre (Obligatorio, máximo 50)[cite: 1]
         const inputNombre = document.getElementById('nombre-registro').value.trim();
         const errorNombre = document.getElementById('error-nombre');
         if (inputNombre === '') {
@@ -139,7 +117,6 @@ if (formRegistro) {
             ocultarError(errorNombre);
         }
 
-        // 3. Validar Apellidos (Obligatorios, máximo 100)[cite: 1]
         const inputApellido = document.getElementById('apellido-registro').value.trim();
         const errorApellido = document.getElementById('error-apellido');
         if (inputApellido === '') {
@@ -152,7 +129,6 @@ if (formRegistro) {
             ocultarError(errorApellido);
         }
 
-        // 4. Validar Correo (Obligatorio, formato, máximo 100)[cite: 1]
         const inputEmail = document.getElementById('email-registro').value.trim();
         const errorEmail = document.getElementById('error-email-registro') || document.getElementById('error-email');
         const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -169,7 +145,6 @@ if (formRegistro) {
             ocultarError(errorEmail);
         }
 
-        // 5. Validar Tipo de Usuario[cite: 1]
         const inputTipo = document.getElementById('tipo-registro').value;
         const errorTipo = document.getElementById('error-tipo');
         if (inputTipo === '') {
@@ -179,7 +154,6 @@ if (formRegistro) {
             ocultarError(errorTipo);
         }
 
-        // 6. Validar Región y Comuna[cite: 1]
         const inputRegion = document.getElementById('region-registro').value;
         const inputComuna = document.getElementById('comuna-registro').value;
         const errorRegion = document.getElementById('error-region');
@@ -199,7 +173,6 @@ if (formRegistro) {
             ocultarError(errorComuna);
         }
 
-        // 7. Validar Dirección (Obligatoria, máximo 300)[cite: 1]
         const inputDireccion = document.getElementById('direccion-registro').value.trim();
         const errorDireccion = document.getElementById('error-direccion');
         if (inputDireccion === '') {
@@ -212,7 +185,6 @@ if (formRegistro) {
             ocultarError(errorDireccion);
         }
         
-        // 8. Validar Contraseña
         const inputPassword = document.getElementById('password-registro').value;
         const errorPassword = document.getElementById('error-password');
         if (inputPassword === '') {
@@ -225,7 +197,6 @@ if (formRegistro) {
             ocultarError(errorPassword);
         }
 
-        // 9. Validar Confirmación de Contraseña
         const inputConfirm = document.getElementById('confirm-password-registro').value;
         const errorConfirm = document.getElementById('error-confirm-password');
         if (inputConfirm === '') {
@@ -238,9 +209,7 @@ if (formRegistro) {
             ocultarError(errorConfirm);
         }
 
-        // 10. Procesar registro si todo es válido
         if (formularioValido) {
-            // Verificar si el usuario ya existe en el arreglo global 'usuarios'
             const usuarioExiste = usuarios.some(u => u.rut === inputRun || u.correo === inputEmail);
             
             if (usuarioExiste) {
@@ -248,7 +217,6 @@ if (formRegistro) {
                 return;
             }
 
-            // Crear y guardar el nuevo usuario
             const nuevoUsuario = {
                 rut: inputRun,
                 nombre: `${inputNombre} ${inputApellido}`,

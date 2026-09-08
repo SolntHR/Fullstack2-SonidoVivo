@@ -1,4 +1,3 @@
-//Arreglo (50 productos)
 const productos = [
     {
         "codigo": "GA001",
@@ -563,7 +562,6 @@ const productos = [
     }
 ];
 
-// Arreglo con usuarios
 const usuarios = [
     {
         rut: "11111111-1",
@@ -591,15 +589,12 @@ const usuarios = [
     }
 ];
 
-// Comprobación en la consola
 console.log("Catálogo inicializado con " + productos.length + " productos.");
 
-// Función para renderizar la página de detalle
 function renderizarDetalle() {
     const contenedorDetalle = document.getElementById("contenedor-detalle");
-    if (!contenedorDetalle) return; // Se detiene si no estamos en detalle.html
+    if (!contenedorDetalle) return;
 
-    // Obtener el código de la URL
     const parametrosURL = new URLSearchParams(window.location.search);
     const codigoProducto = parametrosURL.get('codigo');
 
@@ -608,7 +603,6 @@ function renderizarDetalle() {
         return;
     }
 
-    // Buscar el producto en el arreglo
     const producto = productos.find(p => p.codigo === codigoProducto);
 
     if (!producto) {
@@ -617,10 +611,8 @@ function renderizarDetalle() {
         return;
     }
 
-    // Cambia el título de la página
     document.title = producto["nombre del producto"] + " - Sonido Vivo";
 
-    // Inyectar la información estructurada en dos columnas
     contenedorDetalle.innerHTML = `
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="breadcrumb">
@@ -663,10 +655,8 @@ function renderizarDetalle() {
     `;
 }
 
-// Ejecutar la función al cargar la página
 renderizarDetalle();
 
-// Funciones globales para mostrar y ocultar errores en formularios
 function mostrarError(elemento, mensaje) {
     elemento.textContent = mensaje;
     elemento.classList.remove('d-none');
@@ -677,7 +667,6 @@ function ocultarError(elemento) {
     elemento.classList.add('d-none');
 }
 
-// Lógica para renderizar Productos Destacados en el Inicio
 const contenedorDestacados = document.getElementById('contenedor-destacados');
 
 if (contenedorDestacados) {
@@ -691,7 +680,7 @@ if (contenedorDestacados) {
                     
                     <!-- Espacio para la imagen -->
                     <div class="bg-dark-luxury text-white text-center d-flex align-items-center justify-content-center" style="height: 220px;">
-                        ${producto.imagen 
+                        ${producto.imagen
                             ? `<img src="${producto.imagen}" class="img-fluid h-100 p-3" style="object-fit: contain;" alt="${producto.marca} ${producto.modelo}">` 
                             : '<span style="font-size: 5rem; opacity: 0.5;">🎸</span>'
                         }
@@ -717,37 +706,28 @@ if (contenedorDestacados) {
         `;
     });
 }
-/*
------------------------------ SCROLL AUTOMÁTICO CATEGORÍAS ------------------------
-*/
 const contenedorCategorias = document.getElementById('contenedor-categorias');
 const zonaIzq = document.getElementById('zona-scroll-izq');
 const zonaDer = document.getElementById('zona-scroll-der');
 let intervaloScroll;
 
 if (contenedorCategorias && zonaIzq && zonaDer) {
-    // Función que mueve el scroll fluidamente
     const iniciarScroll = (direccion) => {
-        // Desactivamos temporalmente el scroll-behavior suave para que no compita con el setInterval
         contenedorCategorias.style.scrollBehavior = 'auto';
         
         intervaloScroll = setInterval(() => {
-            // Ajusta el '6' para que el movimiento sea más rápido o más lento
-            contenedorCategorias.scrollLeft += direccion * 6; 
+            contenedorCategorias.scrollLeft += direccion * 6;
         }, 10);
     };
 
     const detenerScroll = () => {
         clearInterval(intervaloScroll);
-        // Devolvemos el scroll suave por si el usuario decide hacer scroll manual
         contenedorCategorias.style.scrollBehavior = 'smooth';
     };
 
-    // Eventos para la zona izquierda
     zonaIzq.addEventListener('mouseenter', () => iniciarScroll(-1));
     zonaIzq.addEventListener('mouseleave', detenerScroll);
     
-    // Eventos para la zona derecha
     zonaDer.addEventListener('mouseenter', () => iniciarScroll(1));
     zonaDer.addEventListener('mouseleave', detenerScroll);
 }

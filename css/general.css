@@ -1,4 +1,4 @@
-/* Estilos Luxury unificados - Sonido Vivo */
+/* Estilos Luxury - Sonido Vivo */
 
 body.bg-luxury {
     background-color: #0a0a0a !important;
@@ -258,20 +258,17 @@ body.bg-luxury {
 }
 
 
-/* Con esto solucionamos que el texto ni se veia*/
+/* Con esto solucionamos que el texto ni se veia, cuadros con degradado bien suavecitos*/
 
 .contenedor-general {
     background-image:
-    /* El degradado protector */
     linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.9) 100%),
 }
 
 .detalle-producto-info {
-  /* Fondo muy suave con degradado que protege todo el bloque de texto */
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.4) 100%);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-  /* Sin bordes marcados para que no parezca un recuadro cerrado */
     padding: 1.5rem;
     border-radius: 16px;
 }

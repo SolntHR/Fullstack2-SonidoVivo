@@ -1,12 +1,9 @@
-// Capturamos los elementos del DOM
 const tablaProductos = document.getElementById('tabla-productos');
 const contadorInventario = document.getElementById('contador-inventario');
 const formMantenedor = document.getElementById('form-mantenedor');
 
-// Variable global para saber si estamos creando o editando
 let productoEnEdicion = null;
 
-// 1. Función para listar los productos
 function renderizarTablaAdmin() {
     if (!tablaProductos) return;
     
@@ -37,33 +34,31 @@ function renderizarTablaAdmin() {
     });
 }
 
-// 2. Función para Eliminar un producto
 function eliminarProducto(codigo) {
-    // Pedimos confirmación antes de borrar
+
     const confirmacion = confirm(`¿Estás seguro de que deseas eliminar el producto ${codigo}?`);
     
     if (confirmacion) {
-        // Buscamos la posición del producto en el arreglo
+
         const indice = productos.findIndex(p => p.codigo === codigo);
         
         if (indice !== -1) {
-            productos.splice(indice, 1); // Lo eliminamos del arreglo
-            renderizarTablaAdmin(); // Refrescamos la tabla
+            productos.splice(indice, 1);
+            renderizarTablaAdmin();
             alert('Producto eliminado exitosamente.');
             reiniciarFormulario();
         }
     }
 }
 
-// 3. Función para Preparar la Edición (Carga los datos al formulario)
+
 function prepararEdicion(codigo) {
-    // Buscamos el producto exacto
+
     const producto = productos.find(p => p.codigo === codigo);
     if (!producto) return;
 
-    // Llenamos el formulario con sus datos
     document.getElementById('admin-codigo').value = producto.codigo;
-    document.getElementById('admin-codigo').disabled = true; // Bloqueamos el código para que no lo cambien
+    document.getElementById('admin-codigo').disabled = true;
     document.getElementById('admin-categoria').value = producto.categoria;
     document.getElementById('admin-marca').value = producto.marca;
     document.getElementById('admin-modelo').value = producto.modelo;
@@ -71,7 +66,6 @@ function prepararEdicion(codigo) {
     document.getElementById('admin-stock').value = producto.stock;
     document.getElementById('admin-descripcion').value = producto["descripcion breve"];
 
-    // Cambiamos el estado y la interfaz visual a "Modo Edición"
     productoEnEdicion = producto.codigo;
     document.getElementById('titulo-formulario').textContent = "Editar Producto";
     
@@ -80,7 +74,6 @@ function prepararEdicion(codigo) {
     btnGuardar.classList.replace('btn-success', 'btn-warning');
 }
 
-// Función auxiliar para reiniciar el formulario a "Modo Creación"
 function reiniciarFormulario() {
     formMantenedor.reset();
     productoEnEdicion = null;
@@ -92,10 +85,9 @@ function reiniciarFormulario() {
     btnGuardar.classList.replace('btn-warning', 'btn-success');
 }
 
-// 4. Lógica combinada para Guardar o Actualizar
 if (formMantenedor) {
     formMantenedor.addEventListener('submit', function(evento) {
-        evento.preventDefault(); 
+        evento.preventDefault();
 
         const codigo = document.getElementById('admin-codigo').value.trim();
         const categoria = document.getElementById('admin-categoria').value;
@@ -111,7 +103,6 @@ if (formMantenedor) {
         }
 
         if (productoEnEdicion) {
-            // ---- MODO EDICIÓN ----
             const indice = productos.findIndex(p => p.codigo === productoEnEdicion);
             if (indice !== -1) {
                 productos[indice].categoria = categoria;
@@ -124,7 +115,6 @@ if (formMantenedor) {
             alert(`¡Éxito! El producto ${marca} ${modelo} ha sido actualizado.`);
             
         } else {
-            // ---- MODO CREACIÓN ----
             const existeCodigo = productos.some(p => p.codigo === codigo);
             if (existeCodigo) {
                 alert('Error: Ya existe un producto con ese código.');
@@ -150,7 +140,6 @@ if (formMantenedor) {
     });
 }
 
-// 5. Botón secundario para limpiar el formulario y salir del modo edición
 const btnLimpiar = document.getElementById('btn-limpiar');
 if (btnLimpiar) {
     btnLimpiar.addEventListener('click', function() {
@@ -158,5 +147,4 @@ if (btnLimpiar) {
     });
 }
 
-// Ejecutamos la tabla inicial
 renderizarTablaAdmin();
