@@ -212,10 +212,58 @@ if (formRegistro) {
             ocultarError(errorDireccion);
         }
         
-        // Aquí agregaremos luego las validaciones de Nombre, Apellido, etc.
+        // 8. Validar Contraseña
+        const inputPassword = document.getElementById('password-registro').value;
+        const errorPassword = document.getElementById('error-password');
+        if (inputPassword === '') {
+            mostrarError(errorPassword, 'La contraseña es obligatoria.');
+            formularioValido = false;
+        } else if (inputPassword.length < 3) {
+            mostrarError(errorPassword, 'La contraseña debe tener entre 4 y 10 caracteres.');
+            formularioValido = false;
+        } else {
+            ocultarError(errorPassword);
+        }
 
+        // 9. Validar Confirmación de Contraseña
+        const inputConfirm = document.getElementById('confirm-password-registro').value;
+        const errorConfirm = document.getElementById('error-confirm-password');
+        if (inputConfirm === '') {
+            mostrarError(errorConfirm, 'Debe confirmar su contraseña.');
+            formularioValido = false;
+        } else if (inputPassword !== inputConfirm) {
+            mostrarError(errorConfirm, 'Las contraseñas no coinciden.');
+            formularioValido = false;
+        } else {
+            ocultarError(errorConfirm);
+        }
+
+        // 10. Procesar registro si todo es válido
         if (formularioValido) {
-            alert('RUN válido. Registro en proceso...');
+            // Verificar si el usuario ya existe en el arreglo global 'usuarios'
+            const usuarioExiste = usuarios.some(u => u.rut === inputRun || u.correo === inputEmail);
+            
+            if (usuarioExiste) {
+                alert('Error: Ya existe una cuenta asociada a este RUN o correo electrónico.');
+                return;
+            }
+
+            // Crear y guardar el nuevo usuario
+            const nuevoUsuario = {
+                rut: inputRun,
+                nombre: `${inputNombre} ${inputApellido}`,
+                correo: inputEmail,
+                password: inputPassword,
+                rol: inputTipo,
+                activo: true
+            };
+            
+            usuarios.push(nuevoUsuario);
+
+            alert(`¡Registro exitoso, ${inputNombre}! Serás redirigido al login.`);
+            formRegistro.reset();
+            window.location.href = 'login.html';
         }
     });
 }
+

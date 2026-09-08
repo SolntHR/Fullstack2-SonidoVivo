@@ -39,12 +39,14 @@
                 <div class="card card-luxury shadow-lg">
                     <div class="card-body p-4 p-md-5">
                         <h2 class="text-center mb-4 text-gold text-uppercase">Registro de Usuario</h2>
-                        <form id="form-registro">
+                        <form id="form-registro" novalidate>
+                            
                             <div class="mb-3">
                                 <label for="run-registro" class="form-label text-secondary">RUN (Sin puntos ni guion)</label>
                                 <input type="text" class="form-control" id="run-registro" placeholder="123456789">
                                 <div id="error-run" class="text-danger small mt-1 d-none"></div>
                             </div>
+
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="nombre-registro" class="form-label text-secondary">Nombre</label>
@@ -57,17 +59,34 @@
                                     <div id="error-apellido" class="text-danger small mt-1 d-none"></div>
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="email-registro" class="form-label text-secondary">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="email-registro">
                                     <div id="error-email" class="text-danger small mt-1 d-none"></div>
                                 </div>
+
                                 <div class="col-md-6 mt-3 mt-md-0">
                                     <label for="fecha-registro" class="form-label text-secondary">Fecha de Nacimiento (Opcional)</label>
                                     <input type="date" class="form-control" id="fecha-registro">
                                 </div>
                             </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="password-registro" class="form-label text-secondary">Contraseña</label>
+                                    <input type="password" class="form-control" id="password-registro" placeholder="Mínimo 4 caracteres">
+                                    <div id="error-password" class="text-danger small mt-1 d-none"></div>
+                                </div>
+                                
+                                <div class="col-md-6 mt-3 mt-md-0">
+                                    <label for="confirm-password-registro" class="form-label text-secondary">Confirmar Contraseña</label>
+                                    <input type="password" class="form-control" id="confirm-password-registro" placeholder="Repite la contraseña">
+                                    <div id="error-confirm-password" class="text-danger small mt-1 d-none"></div>
+                                </div>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="tipo-registro" class="form-label text-secondary">Tipo de Usuario</label>
                                 <select class="form-select" id="tipo-registro">

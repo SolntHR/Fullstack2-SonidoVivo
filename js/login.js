@@ -7,7 +7,7 @@ const formLogin = document.getElementById('form-login');
 if (formLogin) {
     formLogin.addEventListener('submit', function(evento) {
         // Evita que la página se recargue inmediatamente al enviar el formulario
-        evento.preventDefault(); 
+        evento.preventDefault();
 
         // Capturamos los valores ingresados (trim elimina espacios en blanco al inicio y final)
         const email = document.getElementById('email-login').value.trim();
@@ -47,17 +47,27 @@ if (formLogin) {
             ocultarError(errorPass);
         }
 
+        // 3. Procesar el inicio de sesión si el formulario es válido
         if (formularioValido) {
-            const admin = (typeof usuarios !== 'undefined')
-                ? usuarios.find(u => u.correo.toLowerCase() === email.toLowerCase() && u.rol === 'Administrador')
+            // Buscamos si existe un usuario que coincida en correo y contraseña
+            const usuarioEncontrado = (typeof usuarios !== 'undefined')
+                ? usuarios.find(u => u.correo.toLowerCase() === email.toLowerCase() && u.password === pass)
                 : null;
 
-            if (admin) {
-                localStorage.setItem('sesionSonidoVivo', JSON.stringify({ rol: 'admin', correo: email }));
-                window.location.href = 'admin/index_admin.html';
+            if (usuarioEncontrado) {
+                // Si el usuario existe y la clave es correcta, validamos su rol
+                if (usuarioEncontrado.rol === 'Administrador') {
+                    localStorage.setItem('sesionSonidoVivo', JSON.stringify({ rol: 'admin', correo: email }));
+                    // Salimos de "publico" con ../ y entramos a "admin"
+                    window.location.href = '/admin/index_admin.html';
+                } else {
+                    localStorage.setItem('sesionSonidoVivo', JSON.stringify({ rol: 'cliente', correo: email }));
+                    // Se mantiene en la misma carpeta "publico"
+                    window.location.href = 'index.html';
+                }
             } else {
-                localStorage.setItem('sesionSonidoVivo', JSON.stringify({ rol: 'cliente', correo: email }));
-                window.location.href = 'index.html';
+                // Si no coincide correo o contraseña, lanzamos una alerta
+                alert('Correo electrónico o contraseña incorrectos.');
             }
         }
     });

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/general.css">
 </head>
 <body class="bg-light">
+    
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid px-4">
@@ -52,6 +53,11 @@
                                 <input type="email" class="form-control" id="user-correo">
                             </div>
                             
+                            <div class="mb-3" id="contenedor-user-password">
+                                <label for="user-password" class="form-label">Contraseña Inicial</label>
+                                <input type="password" class="form-control" id="user-password" placeholder="Mínimo 4 caracteres">
+                            </div>
+
                             <div class="mb-4">
                                 <label for="user-rol" class="form-label">Rol del Usuario</label>
                                 <select class="form-select" id="user-rol">
@@ -91,7 +97,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tabla-usuarios-body">
-                                    <!-- Se inyecta con JS -->
                                 </tbody>
                             </table>
                         </div>
@@ -102,7 +107,7 @@
         </div>
     </main>
 
-    <!--Script Bootstrap para telefono (oh guau)-->
+    <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/admin_usuarios.js"></script>

@@ -56,6 +56,12 @@ function prepararEdicionUser(rut) {
     document.getElementById('user-correo').value = user.correo;
     document.getElementById('user-rol').value = user.rol;
 
+    // LÓGICA DE SEGURIDAD: Ocultamos el campo de contraseña al editar
+    const contenedorPassword = document.getElementById('contenedor-user-password');
+    if (contenedorPassword) {
+        contenedorPassword.classList.add('d-none');
+    }
+    
     usuarioEnEdicion = user.rut;
     document.getElementById('titulo-form-usuario').textContent = "Editar Usuario";
     
@@ -98,13 +104,21 @@ if (formUsuarios) {
             }
             alert(`¡Éxito! El usuario ${nombre} ha sido actualizado.`);
         } else {
+            
+            const inputPassword = document.getElementById('user-password');
+            const password = inputPassword ? inputPassword.value : '';
+
+            if (!password || password.length < 4) {
+                alert('Debe asignar una contraseña inicial válida (mínimo 4 caracteres).');
+                return;
+            }
             const existeRut = usuarios.some(u => u.rut === rut);
             if (existeRut) {
                 alert('Error: Ya existe un usuario con ese RUT.');
                 return;
             }
 
-            usuarios.push({ rut, nombre, correo, rol, activo: true });
+            usuarios.push({ rut, nombre, correo, password, rol, activo: true });
             alert(`¡Éxito! El usuario ${nombre} ha sido creado.`);
         }
 

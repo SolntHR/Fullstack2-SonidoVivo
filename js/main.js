@@ -569,6 +569,7 @@ const usuarios = [
         rut: "11111111-1",
         nombre: "Solange Hernandez",
         correo: "so.hernandezr@duocuc.cl",
+        password: "12345",
         rol: "Administrador",
         activo: true
     },
@@ -576,6 +577,7 @@ const usuarios = [
         rut: "222222222-1",
         nombre: "Matias Mazzo",
         correo: "ma.mazzo@duocuc.cl",
+        password: "12345",
         rol: "Administrador",
         activo: true
     },
@@ -583,6 +585,7 @@ const usuarios = [
         rut: "33333333-2",
         nombre: "Cliente Frecuente",
         correo: "cliente@ejemplo.com",
+        password: "12345",
         rol: "Cliente",
         activo: true
     }
