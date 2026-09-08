@@ -45,7 +45,7 @@ if (formLogin) {
             if (usuarioEncontrado) {
                 if (usuarioEncontrado.rol === 'Administrador') {
                     localStorage.setItem('sesionSonidoVivo', JSON.stringify({ rol: 'admin', correo: email }));
-                    window.location.href = '/admin/index_admin.html';
+                    window.location.href = '../admin/index_admin.html';
                 } else {
                     localStorage.setItem('sesionSonidoVivo', JSON.stringify({ rol: 'cliente', correo: email }));
                     window.location.href = 'index.html';

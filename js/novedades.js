@@ -83,13 +83,13 @@ function renderizarPostCompleto() {
                             <li class="breadcrumb-item active" aria-current="page">${post.categoria}</li>
                         </ol>
                     </nav>
-                    <h1 class="fw-bold">${post.titulo}</h1>
-                    <p class="text-muted">Por Equipo Sonido Vivo | Publicado el ${post.fecha}</p>
+                    <h1 class="fw-bold text-white" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.9);">${post.titulo}</h1>
+                    <p class="text-light" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.9);">Por Equipo Sonido Vivo | Publicado el ${post.fecha}</p>
                 </div>
 
-                <div class="bg-dark-luxury text-gold d-flex align-items-center justify-content-center rounded shadow-sm mb-5 border border-gold" style="height: 350px;">
-                    <span>${post.imagenPlaceholder}</span>
-                </div>
+                <div class="bg-dark-luxury d-flex align-items-center justify-content-center rounded shadow-sm mb-5 border border-gold overflow-hidden" style="height: 350px;">
+                <img src="${post.imagenPlaceholder}" alt="${post.titulo}" class="w-100 h-100" style="object-fit: cover;">
+            </div>
 
                 <article class="fs-5 text-light" style="line-height: 1.8;">
                     ${post.contenido}
